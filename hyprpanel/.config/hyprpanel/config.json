@@ -415,7 +415,6 @@
         "network",
         "bluetooth",
         "battery",
-        "systray",
         "clock",
         "notifications"
       ]
