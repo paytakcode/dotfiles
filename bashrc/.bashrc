@@ -4,9 +4,7 @@
 [[ $- != *i* ]] && return
 
 case "$TERM" in
-    xterm-256color) color_prompt=yes;;
-    tmux-256color) color_prompt=yes;;
-    xterm-kitty) color_prompt=yes;;
+  xterm-color|*-256color|xterm-kitty) color_prompt=yes;;
 esac
 
 if [ "$color_prompt" = yes ]; then
