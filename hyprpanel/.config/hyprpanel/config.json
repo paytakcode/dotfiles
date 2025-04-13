@@ -12,7 +12,7 @@
   "theme.font.weight": 600,
   "menus.clock.time.hideSeconds": false,
   "menus.clock.weather.location": "Asia/Seoul",
-  "menus.clock.weather.enabled": false,
+  "menus.clock.weather.enabled": true,
   "menus.dashboard.stats.enable_gpu": true,
   "theme.bar.buttons.windowtitle.enableBorder": false,
   "theme.bar.menus.background": "#1F1F28",
@@ -234,15 +234,15 @@
   "theme.bar.buttons.volume.icon": "#7E9CD8",
   "theme.bar.buttons.volume.text": "#C8C093",
   "theme.bar.buttons.volume.background": "#1F1F28",
-  "theme.bar.buttons.windowtitle.icon": "#7E9CD8",
-  "theme.bar.buttons.windowtitle.text": "#C8C093",
+  "theme.bar.buttons.windowtitle.icon": "#E82424",
+  "theme.bar.buttons.windowtitle.text": "#FFFFFF",
   "theme.bar.buttons.windowtitle.background": "#1F1F28",
   "theme.bar.buttons.workspaces.active": "#7E9CD8",
   "theme.bar.buttons.workspaces.occupied": "#7E9CD8",
   "theme.bar.buttons.workspaces.available": "#7E9CD8",
   "theme.bar.buttons.workspaces.hover": "#9399B2",
   "theme.bar.buttons.workspaces.background": "#1F1F28",
-  "theme.bar.buttons.dashboard.icon": "#7E9CD8",
+  "theme.bar.buttons.dashboard.icon": "#E82424",
   "theme.bar.buttons.dashboard.background": "#1F1F28",
   "theme.osd.label": "#C8C093",
   "theme.osd.icon": "#1F1F28",
@@ -272,20 +272,20 @@
   "theme.bar.menus.menu.notifications.pager.label": "#9a9996",
   "theme.bar.menus.menu.notifications.pager.background": "#1F1F28",
   "theme.bar.buttons.clock.icon_background": "#7E9CD8",
-  "theme.bar.buttons.modules.ram.icon": "#ffffff",
+  "theme.bar.buttons.modules.ram.icon": "#7E9CD8",
   "theme.bar.buttons.modules.storage.icon_background": "#ffffff",
   "theme.bar.menus.popover.border": "#1F1F28",
   "theme.bar.buttons.volume.icon_background": "#ffffff",
   "theme.bar.menus.menu.power.buttons.sleep.icon_background": "#ffffff",
   "theme.bar.menus.menu.power.buttons.restart.text": "#ffffff",
   "theme.bar.buttons.modules.updates.background": "#1F1F28",
-  "theme.bar.buttons.modules.storage.icon": "#ffffff",
+  "theme.bar.buttons.modules.storage.icon": "#7E9CD8",
   "theme.bar.buttons.modules.netstat.background": "#1F1F28",
   "theme.bar.buttons.modules.weather.icon": "#7E9CD8",
-  "theme.bar.buttons.modules.netstat.text": "#ffffff",
+  "theme.bar.buttons.modules.netstat.text": "#C8C093",
   "theme.bar.buttons.modules.storage.background": "#1F1F28",
   "theme.bar.buttons.modules.power.icon": "#ffffff",
-  "theme.bar.buttons.modules.storage.text": "#ffffff",
+  "theme.bar.buttons.modules.storage.text": "#C8C093",
   "theme.bar.buttons.modules.cpu.background": "#1F1F28",
   "theme.bar.menus.menu.power.border.color": "#9399B2",
   "theme.bar.buttons.network.icon_background": "#caa6f7",
@@ -293,7 +293,7 @@
   "theme.bar.menus.menu.power.buttons.logout.icon": "#1F1F28",
   "theme.bar.menus.menu.power.buttons.restart.icon_background": "#ffffff",
   "theme.bar.menus.menu.power.buttons.restart.icon": "#1F1F28",
-  "theme.bar.buttons.modules.cpu.icon": "#ffffff",
+  "theme.bar.buttons.modules.cpu.icon": "#7E9CD8",
   "theme.bar.buttons.battery.icon_background": "#ffffff",
   "theme.bar.buttons.modules.kbLayout.icon_background": "#ffffff",
   "theme.bar.buttons.modules.weather.text": "#C8C093",
@@ -308,7 +308,7 @@
   "theme.bar.menus.menu.power.buttons.shutdown.icon_background": "#7E9CD8",
   "theme.bar.menus.menu.power.buttons.shutdown.text": "#ffffff",
   "theme.bar.menus.menu.power.buttons.sleep.background": "#1F1F28",
-  "theme.bar.buttons.modules.ram.text": "#ffffff",
+  "theme.bar.buttons.modules.ram.text": "#C8C093",
   "theme.bar.menus.menu.power.buttons.logout.text": "#ffffff",
   "theme.bar.buttons.modules.updates.icon_background": "#7E9CD8",
   "theme.bar.buttons.modules.kbLayout.background": "#1F1F28",
@@ -317,7 +317,7 @@
   "theme.bar.buttons.icon_background": "#1F1F28",
   "theme.bar.menus.menu.power.background.color": "#1F1F28",
   "theme.bar.buttons.modules.ram.background": "#1F1F28",
-  "theme.bar.buttons.modules.netstat.icon": "#ffffff",
+  "theme.bar.buttons.modules.netstat.icon": "#7E9CD8",
   "theme.bar.buttons.windowtitle.icon_background": "#7E9CD8",
   "theme.bar.buttons.modules.cpu.icon_background": "#ffffff",
   "theme.bar.menus.menu.power.buttons.logout.icon_background": "#ffffff",
@@ -326,7 +326,7 @@
   "theme.bar.buttons.bluetooth.icon_background": "#89dbeb",
   "theme.bar.menus.menu.power.buttons.restart.background": "#1F1F28",
   "theme.bar.buttons.modules.updates.icon": "#7E9CD8",
-  "theme.bar.buttons.modules.cpu.text": "#ffffff",
+  "theme.bar.buttons.modules.cpu.text": "#C8C093",
   "theme.bar.buttons.modules.netstat.icon_background": "#ffffff",
   "theme.bar.buttons.modules.kbLayout.text": "#ffffff",
   "theme.bar.buttons.notifications.icon_background": "#7E9CD8",
@@ -402,10 +402,15 @@
   "bar.media.show_active_only": true,
   "theme.bar.location": "top",
   "bar.layouts": {
-    "0": {
+    "*": {
       "left": [
         "dashboard",
-        "workspaces"
+        "workspaces",
+        "updates",
+        "cpu",
+        "ram",
+        "storage",
+        "netstat"
       ],
       "middle": [
         "windowtitle"
@@ -413,39 +418,9 @@
       "right": [
         "volume",
         "network",
-        "bluetooth",
+        "clock",
+        "weather",
         "battery",
-        "clock",
-        "notifications"
-      ]
-    },
-    "1": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "clock",
-        "notifications"
-      ]
-    },
-    "2": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "clock",
         "notifications"
       ]
     }
@@ -468,5 +443,28 @@
   "bar.workspaces.showWsIcons": true,
   "bar.workspaces.showApplicationIcons": true,
   "bar.workspaces.applicationIconOncePerWorkspace": true,
-  "bar.workspaces.numbered_active_indicator": "highlight"
+  "bar.workspaces.numbered_active_indicator": "highlight",
+  "theme.bar.buttons.modules.kbLayout.enableBorder": false,
+  "bar.customModules.kbLayout.labelType": "layout",
+  "bar.customModules.weather.unit": "metric",
+  "theme.bar.buttons.modules.weather.enableBorder": false,
+  "bar.customModules.ram.label": true,
+  "bar.customModules.kbLayout.label": true,
+  "bar.customModules.netstat.dynamicIcon": true,
+  "bar.customModules.netstat.label": true,
+  "bar.customModules.netstat.rateUnit": "MiB",
+  "bar.customModules.netstat.labelType": "full",
+  "bar.customModules.netstat.round": true,
+  "bar.customModules.storage.round": true,
+  "bar.customModules.submap.showSubmapName": true,
+  "menus.dashboard.powermenu.confirmation": false,
+  "menus.dashboard.controls.enabled": true,
+  "menus.dashboard.stats.enabled": true,
+  "menus.dashboard.shortcuts.enabled": true,
+  "menus.dashboard.directories.enabled": false,
+  "theme.bar.menus.menu.dashboard.profile.size": "11em",
+  "bar.network.truncation_size": 13,
+  "bar.network.truncation": false,
+  "menus.clock.weather.key": "10327711009e447ab8b140149251204",
+  "theme.bar.buttons.modules.cpuTemp.enableBorder": false
 }
