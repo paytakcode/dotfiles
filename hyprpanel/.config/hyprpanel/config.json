@@ -5,7 +5,7 @@
   "tear": false,
   "theme.bar.menus.enableShadow": false,
   "theme.bar.floating": true,
-  "bar.autoHide": "never",
+  "bar.autoHide": "fullscreen",
   "theme.bar.buttons.enableBorders": false,
   "menus.media.hideAuthor": false,
   "menus.transition": "crossfade",
@@ -389,7 +389,7 @@
   "theme.bar.buttons.modules.worldclock.icon": "#7E9CD8",
   "theme.bar.buttons.modules.worldclock.border": "#7E9CD8",
   "theme.bar.menus.menu.media.scaling": 100,
-  "scalingPriority": "gdk",
+  "scalingPriority": "hyprland",
   "theme.bar.buttons.modules.ram.enableBorder": false,
   "bar.customModules.updates.extendedTooltip": false,
   "bar.customModules.weather.label": true,
@@ -465,5 +465,10 @@
   "bar.network.truncation_size": 13,
   "bar.network.truncation": false,
   "menus.clock.weather.key": "10327711009e447ab8b140149251204",
-  "theme.bar.buttons.modules.cpuTemp.enableBorder": false
+  "theme.bar.buttons.modules.cpuTemp.enableBorder": false,
+  "theme.bar.menus.menu.power.scaling": 90,
+  "theme.bar.menus.opacity": 100,
+  "theme.bar.opacity": 100,
+  "theme.bar.transparent": false,
+  "theme.bar.buttons.monochrome": false
 }
