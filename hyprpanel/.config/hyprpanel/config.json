@@ -10,7 +10,7 @@
   "menus.media.hideAuthor": false,
   "menus.transition": "crossfade",
   "theme.font.weight": 600,
-  "menus.clock.time.hideSeconds": false,
+  "menus.clock.time.hideSeconds": true,
   "menus.clock.weather.location": "Asia/Seoul",
   "menus.clock.weather.enabled": true,
   "menus.dashboard.stats.enable_gpu": true,
@@ -470,5 +470,8 @@
   "theme.bar.menus.opacity": 100,
   "theme.bar.opacity": 100,
   "theme.bar.transparent": false,
-  "theme.bar.buttons.monochrome": false
+  "theme.bar.buttons.monochrome": false,
+  "menus.clock.weather.unit": "imperial",
+  "bar.clock.format": "%a %b %d - %I:%M %p",
+  "bar.clock.showIcon": true
 }
