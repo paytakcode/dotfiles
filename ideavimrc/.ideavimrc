@@ -1,0 +1,184 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set quickscope
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set nu
+set scrolloff=10
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamed
+set highlightedyank
+set nerdtree
+set which-key
+set notimeout
+set completeopt=menu,menuone,noselect
+
+""" Idea specific settings ------------------ 
+set ideajoin
+set ideastatusicon=grey
+set idearefactormode=keep
+""" Mappings --------------------------------
+" ✨ EasyMotion
+map <leader>f <Plug>(easymotion-s)
+let g:WhichKeyDesc_easymotion_f = "<leader>f EasyMotion"
+
+" 🐞 디버깅 & 실행
+map <leader>d <Action>(Debug)
+let g:WhichKeyDesc_debug = "<leader>d Debug"
+map <leader>b <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_toggle_breakpoint = "<leader>b Toggle Line Breakpoint"
+map <leader>c <Action>(Stop)
+let g:WhichKeyDesc_debug_stop = "<leader>c Stop"
+map <leader>z <Action>(ToggleDistractionFreeMode)
+let g:WhichKeyDesc_distraction_free = "<leader>z Distraction-Free Mode"
+map <leader>F <Action>(ToggleFullScreen)
+let g:WhichKeyDesc_toggle_fullscreen_ = "<leader>F Toggle Full Screen"
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_vcs_file_history = "<leader>h VCS Current File History"
+
+map <S-Space> <Action>(GotoNextError)
+
+" 🪟 창 전환 및 정리
+map <leader>' <Action>(JumpToLastWindow)
+let g:WhichKeyDesc_jump_last_window = "<leader>' Jump to Last Window"
+map <leader>; <Action>(HideAllWindows)
+let g:WhichKeyDesc_hide_all_windows = "<leader>; Hide All Tool Windows"
+map <leader>q <Action>(CloseContent)
+let g:WhichKeyDesc_close_content = "<leader>q Close Editor Content"
+
+" pane navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+" Tab navigation
+nnoremap <A-l> :tabnext<CR>
+nnoremap <A-h> :tabprev<CR>
+
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" 👆 현재 줄 또는 선택된 줄을 위로 이동
+nmap <A-k> <Action>(MoveLineUp)
+vmap <A-k> <Action>(MoveLineUp)
+
+" 👇 현재 줄 또는 선택된 줄을 아래로 이동
+nmap <A-j> <Action>(MoveLineDown)
+vmap <A-j> <Action>(MoveLineDown)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" 🧠 리팩토링 / 구조
+map <leader>r <Action>(RenameElement)
+let g:WhichKeyDesc_rename = "<leader>r Rename"
+map <leader>a <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_actions = "<leader>a Show Actions"
+map <leader>o <Action>(FileStructurePopup)
+let g:WhichKeyDesc_file_structure = "<leader>o File Structure"
+
+" 🔍 검색
+let g:WhichKeyDesc_search = "<leader>s Search"
+map <leader>sa <Action>(SearchAction)
+let g:WhichKeyDesc_search_action = "<leader>sa Search Action"
+map <leader><leader> <Action>(SearchEverywhere)
+let g:WhichKeyDesc_search_everywhere = "<leader><leader> Search Everywhere"
+map <leader>sr <Action>(RecentFiles)
+let g:WhichKeyDesc_search_recentfiles = "<leader>sr Recent Files"
+map <leader>sc <Action>(GotoClass)
+let g:WhichKeyDesc_search_class = "<leader>sc Goto Class"
+map <leader>sf <Action>(GotoFile)
+let g:WhichKeyDesc_search_file = "<leader>sf Goto File"
+map <leader>ss <Action>(GotoSymbol)
+let g:WhichKeyDesc_search_symbol = "<leader>ss Goto Symbol"
+map <leader>sa <Action>(GotoAction)
+let g:WhichKeyDesc_search_gotoaction = "<leader>sa Goto Action"
+map <leader>st <Action>(FindInPath)
+let g:WhichKeyDesc_search_text = "<leader>st Find in Path"
+map <leader>su <Action>(FindUsages)
+let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
+map <leader>sp <Action>(RecentProjectListGroup)
+let g:WhichKeyDesc_search_projects = "<leader>sp Recent Projects"
+map <leader>sR <Action>(ReplaceInPath)
+let g:WhichKeyDesc_search_replace = "<leader>sR Replace in Path"
+
+" 📎 코드 탐색 (Go to)
+let g:WhichKeyDesc_goto = "<leader>g Goto"
+nmap <leader>gd <Action>(GotoDeclaration)
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Goto Declaration"
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_goto_type = "<leader>gy Goto Type Declaration"
+nmap <leader>gi <Action>(GotoImplementation)
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Goto Implementation"
+nmap <leader>gu <Action>(ShowUsages)
+let g:WhichKeyDesc_goto_usages = "<leader>gu Show Usages"
+nmap <leader>gt <Action>(GotoTest)
+let g:WhichKeyDesc_goto_test = "<leader>gt Goto Test"
+nmap <leader>gf <Action>(Back)
+let g:WhichKeyDesc_goto_back = "<leader>gf Back (Go to Previous Location)"
+nmap <leader>gb <Action>(Forward)
+let g:WhichKeyDesc_goto_forward = "<leader>gb Forward (Go to Next Location)"
+
+" Open NERDTree (use q to exit)
+map <leader>e :NERDTreeToggle<CR>
+let g:WhichKeyDesc_nerdtree_toggle = "<leader>e Toggle NerdTree"
+
+" Folding
+map <leader>zc :action CollapseAllRegions<CR>
+map <leader>zo :action ExpandAllRegions<CR>
+
+" 🔲 Split & Layout
+let g:WhichKeyDesc_window = "<leader>w Window"
+map <leader>wv <Action>(SplitVertically)
+let g:WhichKeyDesc_split_vertical = "<leader>wv Split Vertically"
+map <leader>wh <Action>(SplitHorizontally)
+let g:WhichKeyDesc_split_horizontal = "<leader>wh Split Horizontally"
+map <leader>wu <Action>(Unsplit)
+let g:WhichKeyDesc_split_unsplit = "<leader>wu Unsplit"
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+let g:WhichKeyDesc_split_move = "<leader>wm Move to Other Tab Group"
+
+"Config
+let g:WhichKeyDesc_config = "<leader>, Config"
+let g:WhichKeyDesc_config_vim = "<leader>,v Vim"
+map <leader>,va <Action>(VimFindActionIdAction)
+let g:WhichKeyDesc_config_vim_actions = "<leader>,va Vim Toggle Action Id's"
+map <leader>,vv <Action>(VimPluginToggle)
+let g:WhichKeyDesc_config_vim_toggle = "<leader>,vv Toggle Vim"
+
+" 📌 블랙홀 삭제: 기본 삭제/변경 명령어는 클립보드에 저장되지 않음
+nnoremap d "_d
+nnoremap dd "_dd
+nnoremap x "_x
+nnoremap X "_X
+nnoremap D "_D
+nnoremap c "_c
+nnoremap C "_C
+vnoremap d "_d
+vnoremap c "_c
+
+" ✂️ 'm' 키를 명시적 잘라내기로 사용 (기존 'd'처럼 복사+삭제)
+nnoremap m d
+vnoremap m d
