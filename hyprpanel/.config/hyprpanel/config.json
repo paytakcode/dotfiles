@@ -471,7 +471,10 @@
   "theme.bar.opacity": 100,
   "theme.bar.transparent": false,
   "theme.bar.buttons.monochrome": false,
-  "menus.clock.weather.unit": "imperial",
+  "menus.clock.weather.unit": "metric",
   "bar.clock.format": "%a %b %d - %I:%M %p",
-  "bar.clock.showIcon": true
+  "bar.clock.showIcon": true,
+  "bar.customModules.storage.paths": [
+    "/"
+  ]
 }
