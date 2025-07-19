@@ -24,3 +24,4 @@ alias lg='lazygit'
 # export QT_IM_MODULE=kime
 # export XMODIFIERS=@im=kime
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(~/.local/bin/mise activate bash)"
