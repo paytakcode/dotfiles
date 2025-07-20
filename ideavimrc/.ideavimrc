@@ -10,6 +10,7 @@ set easymotion
 set textobj-entire
 set ReplaceWithRegister
 set quickscope
+set peekaboo
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
 
@@ -74,10 +75,6 @@ nnoremap <c-k> <c-w>k
 " Tab navigation
 nnoremap <A-l> :tabnext<CR>
 nnoremap <A-h> :tabprev<CR>
-
-" Popup navigation
-inoremap <C-j> <Action>(PopupMenu-selectNext)
-inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
 " 👆 현재 줄 또는 선택된 줄을 위로 이동
 nmap <A-k> <Action>(MoveLineUp)
@@ -145,20 +142,38 @@ let g:WhichKeyDesc_goto_forward = "<leader>gb Forward (Go to Next Location)"
 map <leader>e :NERDTreeToggle<CR>
 let g:WhichKeyDesc_nerdtree_toggle = "<leader>e Toggle NerdTree"
 
+" Search Highlight Reset
+map <leader>n :noh<CR>
+let g:WhichKeyDesc_highlight_reset = "<leader>n Highlight reset"
+
 " Folding
 map <leader>zc :action CollapseAllRegions<CR>
 map <leader>zo :action ExpandAllRegions<CR>
 
 " 🔲 Split & Layout
 let g:WhichKeyDesc_window = "<leader>w Window"
-map <leader>wv <Action>(SplitVertically)
-let g:WhichKeyDesc_split_vertical = "<leader>wv Split Vertically"
-map <leader>wh <Action>(SplitHorizontally)
-let g:WhichKeyDesc_split_horizontal = "<leader>wh Split Horizontally"
+map <leader>w\ <Action>(SplitVertically)
+let g:WhichKeyDesc_split_vertical = "<leader>w\\ Split Vertically"
+map <leader>w- <Action>(SplitHorizontally)
+let g:WhichKeyDesc_split_horizontal = "<leader>w- Split Horizontally"
 map <leader>wu <Action>(Unsplit)
 let g:WhichKeyDesc_split_unsplit = "<leader>wu Unsplit"
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 let g:WhichKeyDesc_split_move = "<leader>wm Move to Other Tab Group"
+
+" Window Control
+map <leader>wc <Action>(CloseAllEditorsButActive)
+let g:WhichKeyDesc_resize_close_others = "<leader>wc Close Others"
+map <leader>wf <Action>(MaximizeEditorInSplit)
+let g:WhichKeyDesc_resize_maximize = "<leader>wf Maximize Active Split"
+map <leader>wh <Action>(StretchSplitToLeft)
+let g:WhichKeyDesc_resize_left = "<leader>wh Resize Split Left"
+map <leader>wj <Action>(StretchSplitToBottom)
+let g:WhichKeyDesc_resize_down = "<leader>wj Resize Split Down"
+map <leader>wk <Action>(StretchSplitToTop)
+let g:WhichKeyDesc_resize_up = "<leader>wk Resize Split Up"
+map <leader>wl <Action>(StretchSplitToRight)
+let g:WhichKeyDesc_resize_right = "<leader>wl Resize Split Right"
 
 "Config
 let g:WhichKeyDesc_config = "<leader>, Config"
@@ -178,7 +193,17 @@ nnoremap c "_c
 nnoremap C "_C
 vnoremap d "_d
 vnoremap c "_c
+vnoremap p "_dP
 
 " ✂️ 'm' 키를 명시적 잘라내기로 사용 (기존 'd'처럼 복사+삭제)
 nnoremap m d
 vnoremap m d
+
+" Insert 모드에서 Ctrl + h/j/k/l 로 이동 (ESC 없이)
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+" Insert 모드에서 Ctrl + p 로 붙여넣기
+inoremap <C-p> <C-R>+
