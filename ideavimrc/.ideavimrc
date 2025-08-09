@@ -43,22 +43,22 @@ map <leader>f <Plug>(easymotion-s)
 let g:WhichKeyDesc_easymotion_f = "<leader>f EasyMotion"
 
 " 🐞 디버깅 & 실행
-map <leader>d <Action>(Debug)
 let g:WhichKeyDesc_debug = "<leader>d Debug"
-map <leader>b <Action>(ToggleLineBreakpoint)
-let g:WhichKeyDesc_toggle_breakpoint = "<leader>b Toggle Line Breakpoint"
-map <leader>c <Action>(Stop)
-let g:WhichKeyDesc_debug_stop = "<leader>c Stop"
-map <leader>z <Action>(ToggleDistractionFreeMode)
-let g:WhichKeyDesc_distraction_free = "<leader>z Distraction-Free Mode"
-map <leader>F <Action>(ToggleFullScreen)
-let g:WhichKeyDesc_toggle_fullscreen_ = "<leader>F Toggle Full Screen"
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-let g:WhichKeyDesc_vcs_file_history = "<leader>h VCS Current File History"
+map <leader>dd <Action>(Debug)
+let g:WhichKeyDesc_run_debug = "<leader>dd Run Debug"
+map <leader>db <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_toggle_breakpoint = "<leader>db Toggle Line Breakpoint"
+map <leader>dc <Action>(Stop)
+let g:WhichKeyDesc_debug_stop = "<leader>dc Stop"
 
 map <S-Space> <Action>(GotoNextError)
 
+
 " 🪟 창 전환 및 정리
+map <leader>wZ <Action>(ToggleDistractionFreeMode)
+let g:WhichKeyDesc_distraction_free = "<leader>wZ Distraction-Free Mode"
+map <leader>wF <Action>(ToggleFullScreen)
+let g:WhichKeyDesc_toggle_fullscreen_ = "<leader>wF Toggle Full Screen"
 map <leader>' <Action>(JumpToLastWindow)
 let g:WhichKeyDesc_jump_last_window = "<leader>' Jump to Last Window"
 map <leader>; <Action>(HideAllWindows)
@@ -81,9 +81,9 @@ nmap <A-k> <Action>(MoveLineUp)
 vmap <A-k> <Action>(MoveLineUp)
 
 " 👇 현재 줄 또는 선택된 줄을 아래로 이동
-nmap <A-j> <Action>(MoveLineDown)
 vmap <A-j> <Action>(MoveLineDown)
 
+nmap <A-j> <Action>(MoveLineDown)
 " Easy visual indentation
 vnoremap < <gv
 vnoremap > >gv
@@ -120,6 +120,10 @@ map <leader>sp <Action>(RecentProjectListGroup)
 let g:WhichKeyDesc_search_projects = "<leader>sp Recent Projects"
 map <leader>sR <Action>(ReplaceInPath)
 let g:WhichKeyDesc_search_replace = "<leader>sR Replace in Path"
+map <leader>sh <Action>(LocalHistory.ShowHistory)
+let g:WhichKeyDesc_local_history = "<leader>sh Local History (Current File)"
+map <leader>sH <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_vcs_file_history = "<leader>sH VCS History (Current File)"
 
 " 📎 코드 탐색 (Go to)
 let g:WhichKeyDesc_goto = "<leader>g Goto"
@@ -139,16 +143,18 @@ nmap <leader>gb <Action>(Forward)
 let g:WhichKeyDesc_goto_forward = "<leader>gb Forward (Go to Next Location)"
 
 " Open NERDTree (use q to exit)
-map <leader>e :NERDTreeToggle<CR>
-let g:WhichKeyDesc_nerdtree_toggle = "<leader>e Toggle NerdTree"
+map <leader>e <Action>(ActivateProjectToolWindow)
+let g:WhichKeyDesc_project_tree = "<leader>e Show Project Tree (toggle/focus)"
 
 " Search Highlight Reset
 map <leader>n :noh<CR>
-let g:WhichKeyDesc_highlight_reset = "<leader>n Highlight reset"
+let g:WhichKeyDesc_highlight_reset = "<leader>n Reset Highlight"
 
 " Folding
-map <leader>zc :action CollapseAllRegions<CR>
-map <leader>zo :action ExpandAllRegions<CR>
+map <leader>F :action CollapseAllRegions<CR>
+let g:WhichKeyDesc_fold_all = "<leader>F Fold All"
+map <leader>E :action ExpandAllRegions<CR>
+let g:WhichKeyDesc_expand_all = "<leader>E Expand All"
 
 " 🔲 Split & Layout
 let g:WhichKeyDesc_window = "<leader>w Window"
@@ -175,13 +181,22 @@ let g:WhichKeyDesc_resize_up = "<leader>wk Resize Split Up"
 map <leader>wl <Action>(StretchSplitToRight)
 let g:WhichKeyDesc_resize_right = "<leader>wl Resize Split Right"
 
+" 북마크 추가/제거 (F11) → <Leader>m 으로 매핑
+map <Leader>b :action ToggleBookmark<CR>
+let g:WhichKeyDesc_toggle_bookmark = "<leader>b Toggle Bookmark"
+" 북마크 목록 보기 (Shift+F11) → <Leader>b 로 매핑
+map <Leader>sb :action ShowBookmarks<CR>
+let g:WhichKeyDesc_show_bookmark = "<leader>sb Show Bookmarks"
+
 "Config
 let g:WhichKeyDesc_config = "<leader>, Config"
 let g:WhichKeyDesc_config_vim = "<leader>,v Vim"
-map <leader>,va <Action>(VimFindActionIdAction)
-let g:WhichKeyDesc_config_vim_actions = "<leader>,va Vim Toggle Action Id's"
-map <leader>,vv <Action>(VimPluginToggle)
-let g:WhichKeyDesc_config_vim_toggle = "<leader>,vv Toggle Vim"
+map <leader>,vt <Action>(VimPluginToggle)
+let g:WhichKeyDesc_config_vim_toggle = "<leader>,vt Toggle Vim"
+map <leader>,vi :e ~/.ideavimrc<CR>
+let g:WhichKeyDesc_config_edit_vimrc = "<leader>,vi Edit .ideavimrc"
+map <leader>,vr :source ~/.ideavimrc<CR>
+let g:WhichKeyDesc_config_reload_vimrc = "<leader>,vr Reload .ideavimrc"
 
 " 📌 블랙홀 삭제: 기본 삭제/변경 명령어는 클립보드에 저장되지 않음
 nnoremap d "_d
@@ -207,3 +222,4 @@ inoremap <C-l> <Right>
 
 " Insert 모드에서 Ctrl + p 로 붙여넣기
 inoremap <C-p> <C-R>+
+
