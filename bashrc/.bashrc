@@ -20,8 +20,11 @@ alias ll='ls -l'
 alias grep='grep --color=auto'
 alias vi='nvim'
 alias lg='lazygit'
+alias yay='yay --noconfirm --sudoloop'
 # export GTK_IM_MODULE=kime
 # export QT_IM_MODULE=kime
 # export XMODIFIERS=@im=kime
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(~/.local/bin/mise activate bash)"
+eval "$(direnv hook bash)"
+# grub-mkconfig -o /boot/grub/grub.cfg

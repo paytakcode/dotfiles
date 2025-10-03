@@ -476,5 +476,7 @@
   "bar.clock.showIcon": true,
   "bar.customModules.storage.paths": [
     "/"
-  ]
+  ],
+  "bar.network.showWifiInfo": true,
+  "theme.bar.buttons.modules.netstat.enableBorder": false
 }
