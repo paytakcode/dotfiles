@@ -25,9 +25,7 @@ if status is-interactive # Commands to run in interactive sessions can go here
     
 end
 
-# alias vi='nvim'
+alias vi='vim'
 alias lg='lazygit'
 alias yay='yay --noconfirm --sudoloop'
-# set -gx EDITOR vim
-# set -gx VISUAL vim
-set -x TERM xterm-256color
+fastfetch
