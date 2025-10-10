@@ -25,7 +25,12 @@ if status is-interactive # Commands to run in interactive sessions can go here
     
 end
 
+function execute_last_command
+  eval $history[1]
+end
+
 alias vi='vim'
 alias lg='lazygit'
+alias pacman='pacman --noconfirm --sudoloop'
 alias yay='yay --noconfirm --sudoloop'
-fastfetch
+alias !! execute_last_command
