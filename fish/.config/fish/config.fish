@@ -31,6 +31,6 @@ end
 
 alias vi='vim'
 alias lg='lazygit'
-alias pacman='pacman --noconfirm --sudoloop'
+alias pacman='pacman --noconfirm'
 alias yay='yay --noconfirm --sudoloop'
 alias !! execute_last_command
