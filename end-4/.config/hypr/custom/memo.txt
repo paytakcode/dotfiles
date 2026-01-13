@@ -1,0 +1,10 @@
+# for quickshell bar, left, right things 
+# ~/.config/illogical-impulse/config.json 
+
+"transparency": {
+  "automatic": false,
+  "backgroundTransparency": 0.4,
+  "contentTransparency": 0.5,
+  "enable": true
+},
+
