@@ -1,57 +1,38 @@
 require "irb/completion"
-require 'json'
-require 'open3'
 
 IRB.conf[:INPUT_METHOD] = :reline
 
-if defined?(Reline)
-  # kitty 색상 실행 결과 받아오기
-  out, _ = Open3.capture2("kitty @ get-colors")
+# hex 색상 -> 상대 밝기 계산
+def luminance(hex)
+  r, g, b = hex.delete("#").scan(/../).map { |c| c.to_i(16) / 255.0 }
 
-  # 텍스트 파싱 -> { "background" => "#1b1b17", ... }
-  kitty_colors = {}
-  out.each_line do |line|
-    key, value = line.strip.split
-    next unless key && value
-    kitty_colors[key] = value
+  rgb = [r, g, b].map do |c|
+    c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
   end
 
-  # 기본 색상 변수
-  fg  = kitty_colors["foreground"]
-  bg  = kitty_colors["background"]
-  sfg = kitty_colors["selection_foreground"]
-  sbg = kitty_colors["selection_background"]
-  scrollbar_bg = kitty_colors["tab_bar_background"]
+  0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]
+end
 
-  # mark 색상 배열
-  marks = [
-    { name: :mark1, fg: kitty_colors["mark1_foreground"], bg: kitty_colors["mark1_background"] },
-    { name: :mark2, fg: kitty_colors["mark2_foreground"], bg: kitty_colors["mark2_background"] },
-    { name: :mark3, fg: kitty_colors["mark3_foreground"], bg: kitty_colors["mark3_background"] }
-  ].compact
+# 배경색 기준으로 대비되는 전경색 생성
+def contrast_color(bg_hex)
+  luminance(bg_hex) > 0.5 ? "#000000" : "#FFFFFF"
+end
 
-  # Reline completion_dialog 설정
-  Reline::Face.config(:completion_dialog) do |conf|
-    # 기본
-    conf.define :default, foreground: fg, background: bg
+if defined?(Reline)
+  color_file = File.expand_path("~/.local/state/quickshell/user/generated/color.txt")
 
-    # enhanced 기본 (selection 색상)
-    conf.define :enhanced, foreground: sfg, background: sbg
-
-    # mark 스타일 정의
-    marks.each do |mark|
-      conf.define mark[:name], foreground: mark[:fg], background: mark[:bg]
+  sbg =
+    if File.exist?(color_file)
+      File.read(color_file).strip
+    else
+      "#000000"
     end
 
-    # 스크롤바
-    conf.define :scrollbar, foreground: fg, background: scrollbar_bg
+  sfg = contrast_color(sbg)
 
-    # → 실제 completion 항목 렌더링 쪽에서
-    #    index % marks.size 를 활용해서 순환 적용 가능
-    #
-    #    예:
-    #      item_index = ... # Reline 내부 index
-    #      style_name  = marks[item_index % marks.size][:name]
-    #      conf.apply(style_name) ...
+  Reline::Face.config(:completion_dialog) do |conf|
+    conf.define :enhanced,
+      foreground: sfg,
+      background: sbg
   end
 end
