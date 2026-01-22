@@ -1,7 +1,7 @@
 require "irb/completion"
 require 'json'
 require 'open3'
-j
+
 IRB.conf[:INPUT_METHOD] = :reline
 
 if defined?(Reline)
