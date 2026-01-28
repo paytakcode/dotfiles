@@ -32,8 +32,6 @@ end
 
 alias vi='vim'
 alias lg='lazygit'
-alias pacman='pacman --noconfirm'
-alias yay='yay --noconfirm --sudoloop'
 abbr --add !! execute_last_command
 fish_add_path $HOME/.local/bin
 mise activate fish | source
