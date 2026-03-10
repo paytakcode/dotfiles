@@ -36,3 +36,4 @@ abbr --add !! execute_last_command
 fish_add_path $HOME/.local/bin
 mise activate fish | source
 direnv hook fish | source
+source ~/.config/fish/auto-Hypr.fish
